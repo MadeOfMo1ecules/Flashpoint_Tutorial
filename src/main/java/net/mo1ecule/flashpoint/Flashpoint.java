@@ -1,4 +1,4 @@
-package net.kaupenjoe.tutorialmod;
+package net.mo1ecule.flashpoint;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,12 +14,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(TutorialMod.MOD_ID)
-public class TutorialMod {
-    public static final String MOD_ID = "tutorialmod";
+@Mod(Flashpoint.MOD_ID)
+public class Flashpoint {
+    public static final String MOD_ID = "flashpoint";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public TutorialMod() {
+    public Flashpoint() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
