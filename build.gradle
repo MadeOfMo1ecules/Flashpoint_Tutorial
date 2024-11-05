@@ -1,9 +1,37 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+        jcenter()
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public' } // Mixins
+        maven { url = 'https://maven.parchmentmc.org' } // Parchment
+        maven { url = 'https://api.modrinth.com/maven' } // Modrinth
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:${forgegradle_version}" // Forge
+        classpath "org.spongepowered:mixingradle:${mixingradle_version}" // Mixins
+        classpath "org.parchmentmc:librarian:${librarian_version}" // Parchment
+    }
+}
+
 plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'com.matthewprenger.cursegradle' version "${cursegradle_version}"
+}
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'maven-publish'
+apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
+
+// Workaround for SpongePowered/MixinGradle#38, copied from Create source code
+afterEvaluate {
+    tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
+    tasks.configureReobfTaskForReobfJarJar.mustRunAfter(tasks.compileJava)
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '.cache/'
 }
 
 version = mod_version
@@ -64,6 +92,13 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
+
+            arg '-mixin.config=create.mixins.json'
+            arg '-mixin.config=petrolpark.mixins.json'
+            arg '-mixin.config=destroy.mixins.json'
+            arg '-mixin.config=flywheel.mixins.json'
+            jvmArgs += ['-XX:+AllowEnhancedClassRedefinition']
+
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
@@ -145,6 +180,56 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven { // JEI and Embeddium
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven { // JEI mirror
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven { // Create, Flywheel and Registrate
+        name = 'tterag maven'
+        url = 'https://www.cursemaven.com'
+    }
+
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        forRepositories(fg.repository)
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+
+    //flatDir {
+    //    dirs "../petrolpark_local_maven/petrolpark/petrolpark-${minecraft_version}/${petrolpark_library_version}"
+    //}
+
+    maven {
+        // Curios
+        url = "https://maven.theillusivec4.top/"
+    }
+    maven { // Curse Maven - Farmer's Delight and C:TFMG
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven { // CBC library library
+        url "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1"
+    }
+    maven { // CBC
+        url "https://maven.realrobotix.me/master"
+    }
+    maven { // Blueprint
+        url = "https://maven.jaackson.me"
+    }
+
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
@@ -156,12 +241,53 @@ repositories {
 }
 
 dependencies {
-    // Specify the version of Minecraft to use.
-    // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
-    // The "userdev" classifier will be requested and setup by ForgeGradle.
-    // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
-    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
+    // HARD DEPENDENCIES
+
+    // Minecraft
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Create
+    implementation fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+
+    // Flywheel
+    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}")
+
+    // Registrate
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+
+    // Petrolpark Library (temporary)
+    implementation "maven.modrinth:petrolpark:${minecraft_version}-${petrolpark_library_version}"
+
+    // Destroy
+    implementation "maven.modrinth:petrolpark:${minecraft_version}-${destroy_version}"
+
+    // OPTIONAL DEPENDENCIES
+
+    // JEI
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+
+    // Farmer's Delight
+    compileOnly fg.deobf("curse.maven:farmers-delight-398521:${farmersdelight_version}")
+
+    // Curios
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}+${minecraft_version}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}+${minecraft_version}")
+
+    // TFMG
+    compileOnly fg.deobf("curse.maven:create-industry-693815:5558101")
+
+    // CBC
+    implementation fg.deobf("com.rbasamoyai:ritchiesprojectilelib:1.0.0-369e88d+1.20.1-forge")
+    implementation fg.deobf("com.rbasamoyai:createbigcannons:${cbc_version}")
+
+    // Embeddium
+    compileOnly fg.deobf("maven.modrinth:embeddium:${embeddium_version}+mc${minecraft_version}")
+
+    // ANNOTATION PROCESSORS
+
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
