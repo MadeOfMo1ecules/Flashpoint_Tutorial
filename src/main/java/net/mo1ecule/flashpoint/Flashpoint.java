@@ -12,8 +12,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.mo1ecule.flashpoint.items.FlashpointCreativeModeTabs;
-import net.mo1ecule.flashpoint.items.FlashpointItems;
+import net.mo1ecule.flashpoint.item.FlashpointCreativeModeTabs;
+import net.mo1ecule.flashpoint.item.FlashpointItems;
+
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file

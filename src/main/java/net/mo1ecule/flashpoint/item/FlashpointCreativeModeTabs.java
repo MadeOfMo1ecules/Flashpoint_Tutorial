@@ -1,4 +1,4 @@
-package net.mo1ecule.flashpoint.items;
+package net.mo1ecule.flashpoint.item;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -18,6 +18,7 @@ public class FlashpointCreativeModeTabs {
                     .title(Component.translatable("creativetab.flashpoint_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(FlashpointItems.GAS_CYLINDER.get());
+                        //output.accept(FlashpointItems.WOODCHIPS.get());
                     })
                     .build());
 
