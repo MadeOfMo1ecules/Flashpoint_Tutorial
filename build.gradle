@@ -206,9 +206,9 @@ repositories {
         }
     }
 
-    //flatDir {
-    //    dirs "../petrolpark_local_maven/petrolpark/petrolpark-${minecraft_version}/${petrolpark_library_version}"
-    //}
+    flatDir {
+        dirs "../petrolpark_local_maven/petrolpark/petrolpark-${minecraft_version}/${petrolpark_library_version}"
+    }
 
     maven {
         // Curios
@@ -259,7 +259,9 @@ dependencies {
     implementation "maven.modrinth:petrolpark:${minecraft_version}-${petrolpark_library_version}"
 
     // Destroy
-    implementation "maven.modrinth:petrolpark:${minecraft_version}-${destroy_version}"
+    implementation fg.deobf("maven.modrinth:destroy:${minecraft_version}-${destroy_version}")
+//    implementation "maven.modrinth:destroy:${minecraft_version}-${destroy_version}"
+//    implementation fg.deobf("com.petrolpark.destroy:destroy-${minecraft_version}")
 
     // OPTIONAL DEPENDENCIES
 
