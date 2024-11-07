@@ -15,8 +15,8 @@ public class FlashpointItems {
 
     public static final RegistryObject<Item> GAS_CYLINDER = ITEMS.register("gas_cylinder",
             () -> new Item(new Item.Properties()));
-    //public static final RegistryObject<Item> WOODCHIPS = ITEMS.register("woodchips",
-    //        () -> new FuelItem(new Item.Properties(), 150)); // Same burn time as a slab, todo figure out how to make compostable
+    public static final RegistryObject<Item> WOODCHIPS = ITEMS.register("woodchips",
+            () -> new FuelItem(new Item.Properties(), 150)); // Same burn time as a slab, todo figure out how to make compostable
 
 
     public static void register(IEventBus eventbus){

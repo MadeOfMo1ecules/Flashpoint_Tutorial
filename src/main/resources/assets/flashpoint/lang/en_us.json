@@ -1,5 +1,8 @@
 {
   "item.flashpoint.gas_cylinder": "Gas Cylinder",
+  "item.flashpoint.woodchips": "Woodchips",
+
+  "fluid.flashpoint.wood_slurry": "Wood Slurry",
 
   "creativetab.flashpoint_tab": "Flashpoint"
 }

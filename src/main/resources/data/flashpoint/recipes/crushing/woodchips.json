@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "minecraft:logs"
+    }
+  ],
+  "results": [
+    {
+      "item": "flashpoint:woodchips",
+      "count": 2
+    },
+    {
+      "item": "flashpoint:woodchips",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 200
+}
