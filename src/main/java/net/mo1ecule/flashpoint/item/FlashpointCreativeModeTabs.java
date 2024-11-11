@@ -20,7 +20,8 @@ public class FlashpointCreativeModeTabs {
                     .title(Component.translatable("creativetab.flashpoint_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(FlashpointItems.GAS_CYLINDER.get());
-                        //output.accept(FlashpointItems.WOODCHIPS.get());
+                        output.accept(FlashpointItems.WOODCHIPS.get());
+                        output.accept(FlashpointItems.POTASH.get());
                     })
                     .build());
 

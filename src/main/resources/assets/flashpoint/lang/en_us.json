@@ -1,6 +1,14 @@
 {
   "item.flashpoint.gas_cylinder": "Gas Cylinder",
   "item.flashpoint.woodchips": "Woodchips",
+  "item.flashpoint.potash": "Potash",
+
+  "flashpoint.chemical.sodium_methoxide": "Sodium Methoxide",
+  "flashpoint.chemical.hydrogen": "Hydrogen",
+
+  "flashpoint.reaction.wood_combustion": "Wood Combustion",
+  "flashpoint.reaction.wood_combustion.description": "The burning of wood to produce heat. The leftover ash is also quite useful!",
+  "flashpoint.reaction.wood_pyrolysis": "Wood Pyrolysis",
 
   "fluid.flashpoint.wood_slurry": "Wood Slurry",
 

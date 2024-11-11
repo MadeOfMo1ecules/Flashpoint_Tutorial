@@ -14,6 +14,7 @@ import com.petrolpark.destroy.network.DestroyMessages;
 import com.petrolpark.destroy.recipe.DestroyExtrusions;
 import com.petrolpark.destroy.stats.DestroyStats;
 import com.petrolpark.destroy.util.vat.VatMaterial;
+import com.petrolpark.registrate.PetrolparkRegistrate;
 import com.simibubi.create.content.equipment.goggles.GogglesItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,10 +28,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointMolecules;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointReactions;
 import net.mo1ecule.flashpoint.item.FlashpointCreativeModeTabs;
 import net.mo1ecule.flashpoint.item.FlashpointItems;
 
+import net.mo1ecule.registrate.FlashpointRegistrate;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -39,17 +42,21 @@ public class Flashpoint {
     public static final String MOD_ID = "flashpoint";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final FlashpointRegistrate REGISTRATE = new FlashpointRegistrate(MOD_ID);
+
     public Flashpoint() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         FlashpointCreativeModeTabs.register(modEventBus);
 
-        FlashpointItems.register(modEventBus);
+        FlashpointItems.register();
 
         //modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
+        REGISTRATE.registerEventListeners(modEventBus);
 
         //Initiation Events
         modEventBus.addListener(Flashpoint::init);
@@ -60,11 +67,12 @@ public class Flashpoint {
         event.enqueueWork(() -> {
             DestroyGroupFinder.register();
             DestroyTopologies.register();
-            DestroyMolecules.register();
+//            DestroyMolecules.register();
             DestroyReactions.register();
             DestroyGenericReactions.register();
             DestroyReactions.register();
             FlashpointReactions.register();
+            FlashpointMolecules.register();
         });
 
         // Config
