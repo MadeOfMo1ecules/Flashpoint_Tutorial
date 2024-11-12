@@ -1,0 +1,15 @@
+{
+    "required": "true",
+    "package": "net.mo1ecule.flashpoint.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "refmap": "flashpoint.refmap.json",
+    "mixins": [
+        "HeatLevelMixin"
+    ],
+    "client": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "minVersion": "0.1"
+}

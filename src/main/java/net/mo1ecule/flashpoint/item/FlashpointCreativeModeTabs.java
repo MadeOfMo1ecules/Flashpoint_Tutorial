@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 import net.mo1ecule.flashpoint.Flashpoint;
+import net.mo1ecule.flashpoint.block.FlashpointBlocks;
 
 public class FlashpointCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
@@ -22,6 +23,7 @@ public class FlashpointCreativeModeTabs {
                         output.accept(FlashpointItems.GAS_CYLINDER.get());
                         output.accept(FlashpointItems.WOODCHIPS.get());
                         output.accept(FlashpointItems.POTASH.get());
+                        output.accept(FlashpointBlocks.BLAZER.get());
                     })
                     .build());
 

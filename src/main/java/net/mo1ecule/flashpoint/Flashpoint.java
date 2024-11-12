@@ -3,6 +3,7 @@ package net.mo1ecule.flashpoint;
 import com.mojang.logging.LogUtils;
 import com.petrolpark.destroy.Destroy;
 import com.petrolpark.destroy.advancement.DestroyAdvancementTrigger;
+import com.petrolpark.destroy.block.entity.DestroyBlockEntityTypes;
 import com.petrolpark.destroy.chemistry.api.Chemistry;
 import com.petrolpark.destroy.chemistry.forge.event.ForgeChemistryEventFirer;
 import com.petrolpark.destroy.chemistry.legacy.index.*;
@@ -23,13 +24,17 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import net.mo1ecule.flashpoint.block.FlashpointBlocks;
+import net.mo1ecule.flashpoint.block.entity.FlashpointBlockEntityTypes;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointMolecules;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointReactions;
+import net.mo1ecule.flashpoint.config.FlashpointAllConfigs;
 import net.mo1ecule.flashpoint.item.FlashpointCreativeModeTabs;
 import net.mo1ecule.flashpoint.item.FlashpointItems;
 
@@ -45,11 +50,14 @@ public class Flashpoint {
     public static final FlashpointRegistrate REGISTRATE = new FlashpointRegistrate(MOD_ID);
 
     public Flashpoint() {
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        FlashpointCreativeModeTabs.register(modEventBus);
-
         FlashpointItems.register();
+        FlashpointBlocks.register();
+        FlashpointBlockEntityTypes.register();
+
+        FlashpointCreativeModeTabs.register(modEventBus);
 
         //modEventBus.addListener(this::commonSetup);
 
@@ -57,6 +65,9 @@ public class Flashpoint {
         modEventBus.addListener(this::addCreative);
 
         REGISTRATE.registerEventListeners(modEventBus);
+
+        // Config
+        FlashpointAllConfigs.register(modLoadingContext);
 
         //Initiation Events
         modEventBus.addListener(Flashpoint::init);
@@ -71,8 +82,11 @@ public class Flashpoint {
             DestroyReactions.register();
             DestroyGenericReactions.register();
             DestroyReactions.register();
+//            FlashpointItems.register();
+//            FlashpointBlocks.register();
             FlashpointReactions.register();
             FlashpointMolecules.register();
+
         });
 
         // Config

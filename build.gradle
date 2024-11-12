@@ -22,7 +22,10 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
-
+mixin {
+    add sourceSets.main, "flashpoint.refmap.json"
+    config 'flashpoint.mixins.json'
+}
 // Workaround for SpongePowered/MixinGradle#38, copied from Create source code
 afterEvaluate {
     tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
@@ -96,6 +99,7 @@ minecraft {
             arg '-mixin.config=create.mixins.json'
             arg '-mixin.config=petrolpark.mixins.json'
             arg '-mixin.config=destroy.mixins.json'
+            arg '-mixin.config=flashpoint.mixins.json'
             arg '-mixin.config=flywheel.mixins.json'
             jvmArgs += ['-XX:+AllowEnhancedClassRedefinition']
 
@@ -125,6 +129,7 @@ minecraft {
         server {
             workingDirectory project.file('run')
 
+            arg '-mixin.config=flashpoint.mixins.json'
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
@@ -338,7 +343,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : mod_authors,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs"            : 'flashpoint.mixins.json'
         ])
     }
 }

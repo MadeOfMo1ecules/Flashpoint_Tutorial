@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 
 import static net.mo1ecule.flashpoint.Flashpoint.REGISTRATE;
 
-
 public class FlashpointItems {
 
     public static final ItemEntry<Item>

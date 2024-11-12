@@ -3,8 +3,17 @@
   "item.flashpoint.woodchips": "Woodchips",
   "item.flashpoint.potash": "Potash",
 
+  "block.flashpoint.blazer": "Bunsen Blazer",
+  "block.flashpoint.blazer.burn_rate": "Fuel Burn Rate",
+  "block.flashpoint.blazer.burn_rate_unit": "Burn Rate (%)",
+
   "flashpoint.chemical.sodium_methoxide": "Sodium Methoxide",
   "flashpoint.chemical.hydrogen": "Hydrogen",
+
+  "flashpoint.molecule_tag.combustible": "Combustible",
+
+  "flashpoint.tooltip.blazer.time_remaining": "%1$s of fuel remaining at current burn rate.",
+  "flashpoint.tooltip.blazer.long_time_remaining": "An endless amount",
 
   "flashpoint.reaction.wood_combustion": "Wood Combustion",
   "flashpoint.reaction.wood_combustion.description": "The burning of wood to produce heat. The leftover ash is also quite useful!",
