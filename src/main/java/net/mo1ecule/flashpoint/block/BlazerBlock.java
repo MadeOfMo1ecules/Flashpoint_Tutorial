@@ -35,7 +35,7 @@ import net.mo1ecule.flashpoint.block.entity.FlashpointBlockEntityTypes;
 public class BlazerBlock extends Block implements IBE<BlazerBlockEntity> {
 
     public static final EnumProperty<BlazeLevel> BLAZE_LEVEL = EnumProperty.create("blazer", BlazeLevel.class);
-    public static final IntegerProperty BURNRATE = IntegerProperty.create("burnrate", 0, 250);
+    public static final IntegerProperty BURNRATE = IntegerProperty.create("burnrate", 0, 100);
 
     public BlazerBlock(Properties properties) {
         super(properties);

@@ -34,8 +34,17 @@ public class FlashpointReactions extends DestroyReactions {
     //    .activationEnergy(25f)
     //    .build();
 
+    // Acids
+    static {
+        dissolutionBuilder().flashpointAcid(DestroyMolecules.HYDROGEN_CYANIDE, DestroyMolecules.CYANIDE, 1f, DestroyMolecules.ETHANOL); // kPa chosen arbitrarily
+    };
+
     private static LegacyReaction.ReactionBuilder builder() {
         return new LegacyReaction.ReactionBuilder(Flashpoint.MOD_ID);
     };
+
+    private static Dissolutions dissolutionBuilder(){
+        return new Dissolutions(Flashpoint.MOD_ID);
+    }
     public static void register() {};
 }

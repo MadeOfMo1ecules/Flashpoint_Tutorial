@@ -13,13 +13,13 @@ public class FlashpointMolecules{
 
     public static final LegacySpecies
 
-        SODIUM_METHOXIDE = builder() // todo remove, only used as a test molecule
-            .id("sodium_methoxide")
-            .structure(LegacyMolecularStructure.deserialize("destroy:linear:CONa"))
-            .boilingPoint(623f)
-            .density(945f)
-            .molarHeatCapacity(69.45f)
-            .build(),
+//        SODIUM_METHOXIDE = builder() // todo remove, only used as a test molecule
+//            .id("sodium_methoxide")
+//            .structure(LegacyMolecularStructure.deserialize("destroy:linear:CONa"))
+//            .boilingPoint(623f)
+//            .density(945f)
+//            .molarHeatCapacity(69.45f)
+//            .build(),
 
         HYDROGEN = destroyMoleculeBuilder()
             .id("hydrogen")
@@ -45,7 +45,7 @@ public class FlashpointMolecules{
             /**
              * This Molecule will burn if ignited.
              */
-            COMBUSTIBLE = new LegacySpeciesTag("flashpoint", "combustible")
+            COMBUSTIBLE = new LegacySpeciesTag("flashpoint", "combustible") // todo add little fire image
             .withColor(0xF65C3B);
 
     }
