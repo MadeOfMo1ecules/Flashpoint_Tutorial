@@ -22,6 +22,14 @@ public class FlashpointReactions extends DestroyReactions {
         .enthalpyChange(-100f)
         .preexponentialFactor(70f)
         .activationEnergy(25f)
+        .build(),
+
+    CYANIDE_NEUTRALIZATION = builder()
+        .id("cyanide_neutralization")
+        .addReactant(DestroyMolecules.HYDROGEN_CYANIDE)
+        .addReactant(DestroyMolecules.HYDROXIDE)
+        .addProduct(DestroyMolecules.WATER)
+        .addProduct(DestroyMolecules.CYANIDE)
         .build();
 
     //WOOD_PYROLYSIS = builder() // Should happen at a higher temperature than wood combustion and only in the absence of oxygen

@@ -9,6 +9,9 @@
 
   "flashpoint.chemical.sodium_methoxide": "Sodium Methoxide",
   "flashpoint.chemical.hydrogen": "Hydrogen",
+  "flashpoint.chemical.purine": "Purine",
+  "flashpoint.chemical.theobromine": "Theobromine",
+  "flashpoint.chemical.caffeine": "Caffeine",
 
   "flashpoint.molecule_tag.combustible": "Combustible",
 
@@ -18,6 +21,8 @@
   "flashpoint.reaction.wood_combustion": "Wood Combustion",
   "flashpoint.reaction.wood_combustion.description": "The burning of wood to produce heat. The leftover ash is also quite useful!",
   "flashpoint.reaction.wood_pyrolysis": "Wood Pyrolysis",
+  "flashpoint.reaction.cyanide_neutralization": "Cyanide Neutralization",
+  "flashpoint.reaction.cyanide_neutralization.description": "As a weak acid, hydrogen cyanide can be neutralized with a strong base.",
 
   "fluid.flashpoint.wood_slurry": "Wood Slurry",
 

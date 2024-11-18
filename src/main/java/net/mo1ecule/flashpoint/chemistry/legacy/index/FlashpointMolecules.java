@@ -13,13 +13,40 @@ public class FlashpointMolecules{
 
     public static final LegacySpecies
 
-//        SODIUM_METHOXIDE = builder() // todo remove, only used as a test molecule
+//        SODIUM_METHOXIDE = builder() // only used as a test molecule
 //            .id("sodium_methoxide")
 //            .structure(LegacyMolecularStructure.deserialize("destroy:linear:CONa"))
 //            .boilingPoint(623f)
 //            .density(945f)
 //            .molarHeatCapacity(69.45f)
 //            .build(),
+
+        PURINE = builder()
+            .id("purine")
+            .structure(LegacyMolecularStructure.deserialize("flashpoint:purine:,,,"))
+            //.color(0xFFD00000)
+            //.boilingPoint(444.6f)
+            //.density(2070f)
+            //.molarHeatCapacity(21.64f)
+            //.tag(DestroyMolecules.Tags.SMELLY)
+            //.tag(DestroyMolecules.Tags.SMOG)
+            .build(),
+
+        THEOBROMINE = builder()
+            .id("theobromine")
+            .structure(LegacyMolecularStructure.deserialize("flashpoint:theobromine_base:,O,C,,C,O"))
+            .boilingPoint(560f)
+            .density(1524f)
+            .molarHeatCapacity(226.49f) // Couldn't find, using caffeine's instead
+            .build(),
+
+        CAFFEINE = builder()
+            .id("caffeine")
+            .structure(LegacyMolecularStructure.deserialize("flashpoint:theobromine_base:C,O,C,,C,O"))
+            .boilingPoint(451f)
+            .density(1219f)
+            .molarHeatCapacity(226.49f)
+            .build(),
 
         HYDROGEN = destroyMoleculeBuilder()
             .id("hydrogen")

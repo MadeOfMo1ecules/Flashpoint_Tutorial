@@ -34,6 +34,7 @@ import net.mo1ecule.flashpoint.block.FlashpointBlocks;
 import net.mo1ecule.flashpoint.block.entity.FlashpointBlockEntityTypes;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointMolecules;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointReactions;
+import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointTopologies;
 import net.mo1ecule.flashpoint.config.FlashpointAllConfigs;
 import net.mo1ecule.flashpoint.item.FlashpointCreativeModeTabs;
 import net.mo1ecule.flashpoint.item.FlashpointItems;
@@ -84,6 +85,7 @@ public class Flashpoint {
             DestroyReactions.register();
 //            FlashpointItems.register();
 //            FlashpointBlocks.register();
+            FlashpointTopologies.register();
             FlashpointReactions.register();
             FlashpointMolecules.register();
 
