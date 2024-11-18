@@ -30,6 +30,15 @@ public class FlashpointReactions extends DestroyReactions {
         .addReactant(DestroyMolecules.HYDROXIDE)
         .addProduct(DestroyMolecules.WATER)
         .addProduct(DestroyMolecules.CYANIDE)
+        .build(),
+
+    METHANOL_CHLORINATION = builder()
+        .id("methanol_chlorination")
+        .addReactant(DestroyMolecules.METHANOL)
+        .addReactant(DestroyMolecules.PROTON)
+        .addReactant(DestroyMolecules.CHLORIDE)
+        .addProduct(FlashpointMolecules.METHYL_CHLORIDE)
+        .addProduct(DestroyMolecules.WATER)
         .build();
 
     //WOOD_PYROLYSIS = builder() // Should happen at a higher temperature than wood combustion and only in the absence of oxygen
