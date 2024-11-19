@@ -21,6 +21,33 @@ public class FlashpointMolecules{
 //            .molarHeatCapacity(69.45f)
 //            .build(),
 
+        /*
+        Chlorohydrocarbons
+         */
+
+        METHYL_CHLORIDE = builder() // R-40
+            .id("chloromethane")
+            .structure(LegacyMolecularStructure.deserialize("destroy:linear:CCl"))
+            .boilingPoint(249.3f)
+            .density(1003f)
+            .molarHeatCapacity(81.2f)
+            .tag(DestroyMolecules.Tags.REFRIGERANT)
+            .build(),
+
+        DICHLOROMETHANE = builder() // DCM, R-30
+            .id("dichloromethane")
+            .structure(LegacyMolecularStructure.deserialize("destroy:linear:ClCCl"))
+            .boilingPoint(312.8f)
+            .density(1326.6f)
+            .molarHeatCapacity(102.3f)
+            .tag(DestroyMolecules.Tags.REFRIGERANT)
+            .tag(DestroyMolecules.Tags.ACUTELY_TOXIC)
+            .build(),
+
+        /*
+         Caffeine and related molecules
+         */
+
         PURINE = builder()
             .id("purine")
             .structure(LegacyMolecularStructure.deserialize("flashpoint:purine:,,,"))
@@ -47,6 +74,10 @@ public class FlashpointMolecules{
             .density(1219f)
             .molarHeatCapacity(226.49f)
             .build(),
+
+        /*
+        Destroy Molecules w/ Modifications
+         */
 
         HYDROGEN = destroyMoleculeBuilder()
             .id("hydrogen")

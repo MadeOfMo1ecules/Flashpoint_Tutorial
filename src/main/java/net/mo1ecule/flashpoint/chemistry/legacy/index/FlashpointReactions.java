@@ -24,13 +24,17 @@ public class FlashpointReactions extends DestroyReactions {
         .activationEnergy(25f)
         .build(),
 
-    CYANIDE_NEUTRALIZATION = builder()
-        .id("cyanide_neutralization")
-        .addReactant(DestroyMolecules.HYDROGEN_CYANIDE)
-        .addReactant(DestroyMolecules.HYDROXIDE)
-        .addProduct(DestroyMolecules.WATER)
-        .addProduct(DestroyMolecules.CYANIDE)
-        .build(),
+    /**
+    Caffeine Chemistry
+     **/
+
+    THEOBROMINE_DISSOLUTION = builder()
+
+            .build(),
+
+    /**
+    Chlorine Chemistry
+     **/
 
     METHANOL_CHLORINATION = builder()
         .id("methanol_chlorination")
@@ -39,7 +43,39 @@ public class FlashpointReactions extends DestroyReactions {
         .addReactant(DestroyMolecules.CHLORIDE)
         .addProduct(FlashpointMolecules.METHYL_CHLORIDE)
         .addProduct(DestroyMolecules.WATER)
-        .build();
+        .build(),
+
+    METHANE_CHLORINATION = builder()
+        .id("methane_chlorination")
+        .addReactant(DestroyMolecules.METHANE)
+        .addReactant(DestroyMolecules.CHLORINE)
+        .addProduct(FlashpointMolecules.METHYL_CHLORIDE)
+        .addProduct(DestroyMolecules.HYDROCHLORIC_ACID)
+        .build(),
+
+    METHYL_CHLORIDE_CHLORINATION = builder()
+        .id("methyl_chloride_chlorination")
+        .addReactant(FlashpointMolecules.METHYL_CHLORIDE)
+        .addReactant(DestroyMolecules.CHLORINE)
+        .addProduct(FlashpointMolecules.DICHLOROMETHANE)
+        .addProduct(DestroyMolecules.HYDROCHLORIC_ACID)
+        .build(),
+
+    DCM_CHLORINATION = builder()
+        .id("dcm_chlorination")
+        .addReactant(FlashpointMolecules.DICHLOROMETHANE)
+        .addReactant(DestroyMolecules.CHLORINE)
+        .addProduct(DestroyMolecules.CHLOROFORM)
+        .addProduct(DestroyMolecules.HYDROCHLORIC_ACID)
+        .build(),
+
+    CHLOROFORM_CHLORINATION = builder()
+        .id("chloroform_chlorination")
+        .addReactant(DestroyMolecules.CHLOROFORM)
+        .addReactant(DestroyMolecules.CHLORINE)
+        .addProduct(DestroyMolecules.CARBON_TETRACHLORIDE)
+        .addProduct(DestroyMolecules.HYDROCHLORIC_ACID)
+        .build(),
 
     //WOOD_PYROLYSIS = builder() // Should happen at a higher temperature than wood combustion and only in the absence of oxygen
     //    .id("wood_pyrolysis")
@@ -50,6 +86,14 @@ public class FlashpointReactions extends DestroyReactions {
     //    .preexponentialFactor(40f)
     //    .activationEnergy(25f)
     //    .build();
+
+    CYANIDE_NEUTRALIZATION = builder()
+        .id("cyanide_neutralization")
+        .addReactant(DestroyMolecules.HYDROGEN_CYANIDE)
+        .addReactant(DestroyMolecules.HYDROXIDE)
+        .addProduct(DestroyMolecules.WATER)
+        .addProduct(DestroyMolecules.CYANIDE)
+        .build();
 
     // Acids
     static {
