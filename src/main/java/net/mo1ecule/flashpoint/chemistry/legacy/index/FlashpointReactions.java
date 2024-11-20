@@ -28,9 +28,8 @@ public class FlashpointReactions extends DestroyReactions {
     Caffeine Chemistry
      **/
 
-    THEOBROMINE_DISSOLUTION = builder()
-
-            .build(),
+//    THEOBROMINE_DISSOLUTION = builder()
+//            .build(),
 
     /**
     Chlorine Chemistry

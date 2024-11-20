@@ -1,0 +1,32 @@
+{
+    "type": "create:compacting",
+    "ingredients": [
+      {
+        "item": "minecraft:cocoa_beans"
+      },
+      {
+        "mixtureFluidWithMolecule": "destroy:mixture",
+        "amount": 2,
+        "molecule": "destroy:methanol",
+        "concentration": 24.711
+      },
+      {
+        "mixtureFluidWithMolecule": "destroy:mixture",
+        "amount": 2,
+        "molecule": "flashpoint:dichloromethane",
+        "concentration": 15.62
+      },
+      {
+        "item": "create:filter"
+      }
+    ],
+    "results": [
+      {
+        "item": "flashpoint:cocoa_extract"
+      },
+      {
+        "item": "create:filter"
+      }
+    ],
+    "heatRequirement": "heated"
+  }

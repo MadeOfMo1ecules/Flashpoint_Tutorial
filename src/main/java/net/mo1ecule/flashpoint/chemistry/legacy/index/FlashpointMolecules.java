@@ -28,7 +28,7 @@ public class FlashpointMolecules{
         METHYL_CHLORIDE = builder() // R-40
             .id("chloromethane")
             .structure(LegacyMolecularStructure.deserialize("destroy:linear:CCl"))
-            .boilingPoint(249.3f)
+            .boilingPointInKelvins(249.3f)
             .density(1003f)
             .molarHeatCapacity(81.2f)
             .tag(DestroyMolecules.Tags.REFRIGERANT)
@@ -37,7 +37,7 @@ public class FlashpointMolecules{
         DICHLOROMETHANE = builder() // DCM, R-30
             .id("dichloromethane")
             .structure(LegacyMolecularStructure.deserialize("destroy:linear:ClCCl"))
-            .boilingPoint(312.8f)
+            .boilingPointInKelvins(312.8f)
             .density(1326.6f)
             .molarHeatCapacity(102.3f)
             .tag(DestroyMolecules.Tags.REFRIGERANT)
@@ -62,7 +62,7 @@ public class FlashpointMolecules{
         THEOBROMINE = builder()
             .id("theobromine")
             .structure(LegacyMolecularStructure.deserialize("flashpoint:theobromine_base:,O,C,,C,O"))
-            .boilingPoint(560f)
+            .boilingPointInKelvins(560f)
             .density(1524f)
             .molarHeatCapacity(226.49f) // Couldn't find, using caffeine's instead
             .build(),
@@ -70,7 +70,7 @@ public class FlashpointMolecules{
         CAFFEINE = builder()
             .id("caffeine")
             .structure(LegacyMolecularStructure.deserialize("flashpoint:theobromine_base:C,O,C,,C,O"))
-            .boilingPoint(451f)
+            .boilingPointInKelvins(451f)
             .density(1219f)
             .molarHeatCapacity(226.49f)
             .build(),
