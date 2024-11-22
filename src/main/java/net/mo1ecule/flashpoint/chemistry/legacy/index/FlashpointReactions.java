@@ -29,7 +29,11 @@ public class FlashpointReactions extends DestroyReactions {
      **/
 
 //    THEOBROMINE_DISSOLUTION = builder()
-//            .build(),
+//        .id("theobromine_dissolution")
+//            .addReactant(DestroyMolecules.METHANOL)
+////            .addSimpleItemReactant()
+//            .addProduct(FlashpointMolecules.THEOBROMINE, 5)
+//        .build(),
 
     /**
     Chlorine Chemistry

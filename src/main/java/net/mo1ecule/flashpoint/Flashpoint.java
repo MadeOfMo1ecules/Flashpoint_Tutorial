@@ -8,6 +8,7 @@ import com.petrolpark.destroy.chemistry.api.Chemistry;
 import com.petrolpark.destroy.chemistry.forge.event.ForgeChemistryEventFirer;
 import com.petrolpark.destroy.chemistry.legacy.index.*;
 import com.petrolpark.destroy.config.DestroyAllConfigs;
+import com.petrolpark.destroy.effect.DestroyMobEffects;
 import com.petrolpark.destroy.fluid.pipeEffectHandler.DestroyOpenEndedPipeEffects;
 import com.petrolpark.destroy.item.compostable.DestroyCompostables;
 import com.petrolpark.destroy.item.potatoCannonProjectileType.DestroyPotatoCannonProjectileTypes;
@@ -36,6 +37,7 @@ import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointMolecules;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointReactions;
 import net.mo1ecule.flashpoint.chemistry.legacy.index.FlashpointTopologies;
 import net.mo1ecule.flashpoint.config.FlashpointAllConfigs;
+import net.mo1ecule.flashpoint.effect.FlashpointMobEffects;
 import net.mo1ecule.flashpoint.item.FlashpointCreativeModeTabs;
 import net.mo1ecule.flashpoint.item.FlashpointItems;
 
@@ -59,6 +61,7 @@ public class Flashpoint {
         FlashpointBlockEntityTypes.register();
 
         FlashpointCreativeModeTabs.register(modEventBus);
+        FlashpointMobEffects.register(modEventBus);
 
         //modEventBus.addListener(this::commonSetup);
 

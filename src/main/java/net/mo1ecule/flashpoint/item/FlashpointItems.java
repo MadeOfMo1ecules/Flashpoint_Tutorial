@@ -9,7 +9,7 @@ import static net.mo1ecule.flashpoint.Flashpoint.REGISTRATE;
 public class FlashpointItems {
 
     public static final ItemEntry<Item>
-        COCOA_EXTRACT = REGISTRATE.item("cocoa_extract", Item::new)
+        COCOA_EXTRACT = REGISTRATE.item("cocoa_extract", Item::new) // todo add to creative tab
             .register(),
         GAS_CYLINDER = REGISTRATE.item("gas_cylinder", Item::new)
             .register(),

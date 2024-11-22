@@ -16,7 +16,10 @@ buildscript {
 
 plugins {
     id 'com.matthewprenger.cursegradle' version "${cursegradle_version}"
+
+    id "com.github.johnrengelman.shadow" version "7.1.2"
 }
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'maven-publish'
