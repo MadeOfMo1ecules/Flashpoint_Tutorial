@@ -70,7 +70,7 @@ public class ModEvents {
 
                 if ((event.player.hasEffect(WINGS.get()))) {
                     if (!event.player.isSpectator() && !event.player.isCreative() && !event.player.onGround() && isJumping() && flaps.getFlaps() < flaps.getMaxFlaps() && flaps.isDebounced()) {
-                        event.player.setDeltaMovement(speed.x, 0.7, speed.z);
+                        event.player.setDeltaMovement(speed.x*1.3, 0.7, speed.z*1.3); // The 1.2x speed modifier on x and z speeds is to avoid speed loss that happens for some reason after midair jumps
                         event.player.hurtMarked = true;
                         flaps.addFlaps();
                         flaps.jumpBounce();
