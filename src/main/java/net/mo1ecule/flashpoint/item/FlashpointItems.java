@@ -3,6 +3,10 @@ package net.mo1ecule.flashpoint.item;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.mo1ecule.flashpoint.item.custom.BottledDrinkItem;
+import net.mo1ecule.flashpoint.item.food.FlashpointFoods;
 
 import static net.mo1ecule.flashpoint.Flashpoint.REGISTRATE;
 
@@ -11,9 +15,18 @@ public class FlashpointItems {
     public static final ItemEntry<Item>
         COCOA_EXTRACT = REGISTRATE.item("cocoa_extract", Item::new) // todo add to creative tab
             .register(),
+
         GAS_CYLINDER = REGISTRATE.item("gas_cylinder", Item::new)
             .register(),
         POTASH = REGISTRATE.item("potash", Item::new)
+            .register();
+
+    public static final ItemEntry<BottledDrinkItem>
+        RED_BELL = REGISTRATE.item("red_bell", p -> new BottledDrinkItem(p, new ItemStack(Items.GLASS_BOTTLE)))
+            .properties(p -> p
+                .food(FlashpointFoods.RED_BELL)
+                // todo give can back
+            )
             .register();
 
     public static final ItemEntry<CombustibleItem>

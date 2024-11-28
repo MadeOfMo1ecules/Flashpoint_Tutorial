@@ -20,6 +20,8 @@ import net.mo1ecule.flashpoint.effect.WingsFlaps;
 import net.mo1ecule.flashpoint.effect.WingsFlapsProvider;
 import net.mo1ecule.flashpoint.effect.WingsMobEffect;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static java.lang.String.format;
 import static net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE;
 import static net.mo1ecule.flashpoint.effect.FlashpointMobEffects.WINGS;
@@ -56,21 +58,21 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if ((event.side == LogicalSide.SERVER)) {
             event.player.getCapability(WingsFlapsProvider.PLAYER_FLAPS).ifPresent(flaps -> {
-                Vec3 speed = event.player.getDeltaMovement();
-                event.player.fallDistance = 0;
-
-                if (event.player.onGround()) { // If we're on the ground...
-                    flaps.resetFlaps(); // ... refresh the player's jumps
-                    flaps.jumpBounce(); // ... make the player unable to double jump
-                } else { // But if we're in the air...
-                    if (!Minecraft.getInstance().options.keyJump.isDown()) { //... and if we're not holding the space bar...
-                        flaps.jumpDebounce(); // ... make the player able to jump again!
-                    }
-                }
 
                 if ((event.player.hasEffect(WINGS.get()))) {
+                Vec3 speed = event.player.getDeltaMovement();
+                    if (event.player.onGround()) { // If we're on the ground...
+                        flaps.resetFlaps(); // ... refresh the player's jumps
+                        flaps.jumpBounce(); // ... make the player unable to double jump
+                    } else { // But if we're in the air...
+                        if (!Minecraft.getInstance().options.keyJump.isDown()) { //... and if we're not holding the space bar...
+                            flaps.jumpDebounce(); // ... make the player able to jump again!
+                        }
+                    }
+ // TODO cap max speed so that you can't get ridiculously fast by chaining double jumps, slime blocks, etc
+                    event.player.fallDistance = 0;
                     if (!event.player.isSpectator() && !event.player.isCreative() && !event.player.onGround() && isJumping() && flaps.getFlaps() < flaps.getMaxFlaps() && flaps.isDebounced()) {
-                        event.player.setDeltaMovement(speed.x*1.3, 0.7, speed.z*1.3); // The 1.2x speed modifier on x and z speeds is to avoid speed loss that happens for some reason after midair jumps
+                        event.player.setDeltaMovement(speed.x*1.3, min((max(speed.y, 0)+0.5), 3), speed.z*1.3); // The 1.3x speed modifier on x and z speeds is to avoid speed loss that happens for some reason after midair jumps
                         event.player.hurtMarked = true;
                         flaps.addFlaps();
                         flaps.jumpBounce();
